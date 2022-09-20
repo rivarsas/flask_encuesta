@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Encuesta Dojo</title>
+</head>
+
+<body>
+    <div class="main-div">
+
+        <form action="/process" method="POST">
+            <h1>Dojo Survey</h1>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div>
+                <label for="location">Dojo Location:</label>
+                <select name="location" id="location">
+                    <option value="None">Select your location</option>
+                    <option value="Palo Alto">Palo Alto</option>
+                    <option value="La Plata">La Plata</option>
+                    <option value="Pasadena">Pasadena</option>
+                    <option value="Sillicon Valley">Sillicon Valley</option>
+                </select>
+            </div>
+            <div>
+                <label for="language">Favorite Language:</label>
+                <select name="language" id="language">
+                    <option value="None">Select your language</option>
+                    <option value="Python">Python</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="C++">C++</option>
+                    <option value="Mern">Mern</option>
+                </select>
+            </div>
+            <div>
+                <label for="comments">Favorite Language:</label>
+                <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+        <div class="warning">
+            {% for message in messages %}
+            <p>{{message}}</p>
+            {% endfor %}
+        </div>
+        {% endwith %}
+    </div>
+</body>
+
+</html>
